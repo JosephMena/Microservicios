@@ -1,8 +1,6 @@
 package org.zer0.micro.reniec.ServicioReniec;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReniecRest {
 
 	private static Map<String,Persona> dbPersona = new HashMap<>();
-	 
+	private static long l=(new java.util.Date()).getTime(); 
     static {
         Persona std = new Persona(19, "Cesar Augusto","42585594");
         dbPersona.put(std.getDni(),std);
@@ -25,7 +23,7 @@ public class ReniecRest {
 	
     @RequestMapping(value = "/persona/{dni}", method = RequestMethod.GET)
     public Persona getPersona(@PathVariable String dni) {
-        System.out.println("DNI:" + dni);
+        System.out.println("DNI:" + dni + "-"+l);
  
         Persona personaTemp = dbPersona.get(dni);
         if (personaTemp == null) {
