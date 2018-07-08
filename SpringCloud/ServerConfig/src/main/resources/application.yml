@@ -11,6 +11,6 @@ spring:
     config:
       server:
         git:
-          uri: ssh://127.0.0.1/usr/local/reposGit/repoPrueba.git
+          uri: ssh://192.168.1.42:22/usr/local/reposGit/repoPrueba.git
           username: zer0
           password: overflow
