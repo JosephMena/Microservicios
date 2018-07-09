@@ -1,6 +1,44 @@
+# Version Inicial, soporte Standalone:
+
+#server:
+#  port: 8899
+#eureka:
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+
+# Version Peer Awareness, en ella deben existir dos instancias de Eureka Server
+# El serviceRegistry1 lo pondre en la maquina 10.0.0.7 y el serviceRegistry2 en 192.168.1.42
+
+#server:
+#  port: 8899
+#  
+#spring:
+#  application:
+#    name: eurekaServer1  
+#eureka:
+#  instance:
+#    hostname:  serviceRegistry1
+#    
+#  client:
+#    serviceUrl:
+#      defaultZone: http://serviceRegistry2:8899/eureka/
+
+# serviceRegistry2
+
 server:
   port: 8899
+  
+spring:
+  application:
+    name: eurekaServer2
+    
 eureka:
+  instance:
+    hostname:  serviceRegistry2
+    
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://serviceRegistry1:8899/eureka/
+      
+      
